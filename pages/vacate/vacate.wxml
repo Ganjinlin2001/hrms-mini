@@ -1,0 +1,71 @@
+<!-- pages/vacate/vacate.wxml -->
+<view class="vacate-page">
+  <scroll-view class="nav-scroll-view-panel" scroll-x enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation="true" enhanced="true" show-scrollbar="false">
+    <view class="nav-item {{navId === item.id? 'active': ''}}" wx:for="{{navData}}" wx:key="id" id="{{item.id}}" bindtap="changeNav">
+      <text>{{item.navName}}</text>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y class="content-scroll-view-panel">
+    <view wx:if="{{current === 0}}" class="apply-page">
+      <view class="cell-item">
+        <view class="cell-label">开始时间</view>
+        <picker disabled="{{disabled}}" mode="date" bindchange="chooseStartTime">
+          <view class="cell-picker">
+            <!-- 当前选择：{{array[index]}} -->
+            {{start_time}}
+          </view>
+        </picker>
+      </view>
+      <view class="cell-item">
+        <view class="cell-label">结束时间</view>
+        <picker disabled="{{disabled}}" mode="date" bindchange="chooseEndTime">
+          <view class="cell-picker">{{end_time}}</view>
+        </picker>
+      </view>
+      <block wx:if="{{status == 0}}">
+        <view class="cell-item-textarea">
+          <view class="cell-label">申请原因</view>
+          <textarea value="{{reason}}" bindinput="getReason" class="reason-input-box" placeholder="请输入您的申请缘由"></textarea>
+        </view>
+        <view class="submit-button">
+          <button type="primary" bindtap="handleSumbit">提交</button>
+        </view>
+      </block>
+      <block wx:if="{{status === 1}}">
+        <view class="cell-reason-title">申请原因</view>
+        <view class="reason-text">
+          <text user-select="true">{{reason}}</text>
+        </view>
+        <view class="applying">
+          <text>审核中</text>
+        </view>
+        <view class="cancelApply">
+          <button type="primary" bindtap="cancelApplyEvent">取消申请</button>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{current === 1}}" class="log-page">
+      <view class="no-data" wx:if="{{allVacateData.length === 0}}">
+        <text>无记录~</text>
+      </view>
+      <view class="vacate-item" wx:for="{{allVacateData}}">
+        <view class="left">
+          <view class="left-item">
+            <text user-select="true">开始时间：{{item.start_time}}</text>
+          </view>
+          <view class="left-item">
+            <text user-select="true">结束时间：{{item.end_time}}</text>
+          </view>
+          <view class="left-item">
+            <text user-select="true">申请时间：{{item.createAt}}</text>
+          </view>
+        </view>
+        <view class="right">
+          <view class="{{item.statusClass}}">
+            <text>{{item.statusText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

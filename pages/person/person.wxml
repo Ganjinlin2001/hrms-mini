@@ -1,0 +1,38 @@
+<!-- pages/person/person.wxml -->
+<!-- <text>pages/person/person.wxml</text> -->
+<view class="person-page">
+  <!-- 员工个人信息修改页面 -->
+  <block wx:for="{{userInfo}}">
+    <view class="info-item-img" wx:if="{{item.type === 'img'}}" data-item="{{item}}" bindtap="reuploadImg">
+      <view class="info-left-label">
+        <text>{{item.label}}</text>
+      </view>
+      <view class="info-right">
+        <view class="avatar">
+          <image src="{{item.value}}" />
+        </view>
+        <view class="arrow">
+          <icon class="iconfont icon-xiangyou1"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="info-item" wx:else data-item="{{item}}" bindtap="navigateToModify">
+      <view class="info-left-label">
+        <text>{{item.label}}</text>
+      </view>
+      <view class="info-right">
+        <view class="info-right-text">
+          <text wx:if="{{item.type === 'short_text'}}"> {{ item.value }} </text>
+          <text wx:if="{{item.type === 'birthday'}}"> {{ item.value }} </text>
+          <text wx:if="{{item.type === 'forbid'}}"> {{ item.value }} </text>
+          <text wx:if="{{item.type === 'password'}}"> ****** </text>
+          <text wx:if="{{item.type === 'gender'}}"> {{item.value === '1' ? '男': '女'}} </text>
+        </view>
+        <view class="arrow">
+          <icon class="iconfont icon-xiangyou1"></icon>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="space"></view>
+</view>

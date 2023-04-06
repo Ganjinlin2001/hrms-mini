@@ -1,0 +1,54 @@
+/* 
+  封装微信官方的请求方法
+*/
+
+// 请求地址
+const baseURL = 'http://127.0.0.1:7001';
+
+const request = ({
+  url,
+  method,
+  data
+}) => {
+  console.log("2-data: ", data);
+  // return new Promise();
+  return new Promise((resolve, reject) => {
+    // console.warn("test");
+    wx.request({
+      url: baseURL + url,
+      method,
+      data,
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: res => {
+        wx.hideLoading();
+        console.log(3, res);
+        if (res.data.code !== 200) {
+          console.log('弹窗提醒');
+          wx.showModal({
+            title: '提示',
+            content: res.data.message,
+          })
+        } else {
+          if (res.data.result != undefined) {
+            wx.showToast({
+              title: res.data.message,
+              icon: 'success',
+            })
+          }
+        }
+        console.log(4);
+        console.log(res);
+        resolve(res);
+      },
+      fail: err => {
+        wx.hideLoading();
+        // console.log(err);
+        reject(err);
+      }
+    })
+  })
+}
+
+export default request;

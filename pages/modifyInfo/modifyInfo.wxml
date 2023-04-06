@@ -1,0 +1,53 @@
+<!--pages/modifyInfo/modifyInfo.wxml-->
+<view class="modify-info-container">
+  <!-- 分四种输入框 -->
+  <!-- 第一种：性别选择 -->
+  <!-- 第二种：短输入框 -->
+  <!-- 第三种：长输入框 -->
+  <!-- 第四种：生日，日期选择器 -->
+  <!-- 第一种：性别选择 -->
+  <view class="gender-container" wx:if="{{type === 'gender'}}">
+    <radio-group bindchange="radioChange">
+      <label class="weui-cell weui-check__label" wx:for="{{genderRadio}}" wx:key="{{item.value}}">
+        <view class="weui-cell__hd">
+          <radio value="{{item.value}}" checked="{{item.checked}}" />
+        </view>
+        <view class="weui-cell__bd">{{item.name}}</view>
+      </label>
+    </radio-group>
+  </view>
+  <!-- 第二种：短输入框 -->
+  <view class="short-text-input" wx:if="{{type === 'short_text'}}">
+    <view class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <label class="weui-label" style="width: 300rpx;">{{label}}</label>
+      </view>
+      <view class="weui-cell__bd">
+        <input class="weui-input" bindblur="handleInputChange" value="{{value}}" id="{{key}}" placeholder="" type="text" placeholder-class="weui-input__placeholder" />
+      </view>
+    </view>
+  </view>
+  <!-- 第三种：长输入框 -->
+  <view class="long-text-input weui-cells__group weui-cells__group_form" wx:if="{{type === 'long_text'}}">
+    <view class="weui-cells__title" style="font-size: 40rpx;">{{label}}</view>
+    <view class="weui-cells weui-cells_form">
+      <view class="weui-cell weui-cell_active">
+        <view class="weui-cell__bd">
+          <textarea value="{{value}}" class="weui-textarea" bindinput="handleInputChange" style="height: 600rpx;"></textarea>
+        </view>
+      </view>
+    </view>
+  </view>
+  <!-- 第四种：生日，日期选择器 -->
+  <view class="birthday-picker" wx:if="{{type === 'birthday'}}">
+    <!-- <view class="weui-cells__title" style="font-size: 40rpx;">{{label}}</view> -->
+    <picker mode="date" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="picker">
+      生日：{{value}}
+    </view>
+  </picker>
+  </view>
+  <view class="submit-container">
+    <button type="primary" bindtap="submitChange">提交修改</button>
+  </view>
+</view>

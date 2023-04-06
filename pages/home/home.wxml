@@ -1,0 +1,35 @@
+<!--pages/home/home.wxml-->
+<view class="home-container">
+  <!-- 头像信息 -->
+  <view class="avatar-container" hover-class="hover" id="person" bindtap="handleNavigate">
+    <view class="avatar-left">
+      <image src="{{userInfo.avatar}}"></image>
+    </view>
+    <view class="avatar-right">
+      <view class="name">
+        <text>{{userInfo.name}}</text>
+      </view>
+      <view class="code">
+        <text>工号：{{userInfo.code}}</text>
+      </view>
+    </view>
+    <view class="arrow">
+      <icon class="iconfont icon-xiangyou1"></icon>
+    </view>
+  </view>
+  <!-- 功能条 -->
+  <block wx:for="{{navigationData}}">
+    <view class="fun-item" id="{{item.id}}" hover-class="hover" bindtap="handleNavigate">
+      <view class="icon">
+        <image src="{{item.page}}" />
+      </view>
+      <view class="fun-name">
+        <text>{{item.name}}</text>
+      </view>
+      <view class="arrow">
+        <icon class="iconfont icon-xiangyou1"></icon>
+      </view>
+    </view>
+  </block>
+  <view class="space"></view>
+</view>

@@ -1,19 +1,35 @@
-/**index.wxss**/
-.userinfo {
+/* pages/index.wxss */
+
+.index-container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center;
-  color: #aaa;
+  width: 100vw;
+  height: 100vh;
+}
+.heading {
+  width: 100vw;
+  height: 240rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30rpx;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.main-heading {
+  font-size: 50rpx;
+  padding: 20rpx 0rpx;
 }
 
-.usermotto {
-  margin-top: 200px;
+.subtitle {
+  font-size: 60rpx;
+  color: #07c160;
+  font-weight: 700;
 }
+
+.register {
+  margin-top: 60rpx;
+}
+

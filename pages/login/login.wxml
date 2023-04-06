@@ -1,0 +1,22 @@
+<!--pages/login/login.wxml-->
+<view class="login-wrapper">
+  <view class="admin-login-form">
+    <form action="">
+      <view class="user-phone">
+        <text class="form-tip">工号</text>
+        <input type="number" placeholder="请输入您的工号" maxlength="6" bindinput="getUserPhone" />
+      </view>
+      <view class="user-password">
+        <text class="form-tip">密码</text>
+        <input type="{{type}}" placeholder="请输入您的密码" maxlength="6" bindinput="getPassword" />
+        <text class="eye-icon iconfont icon-yanjing" wx:if="{{type === 'password'}}" bindtap="eyeClick"></text>
+        <text class="eye-icon iconfont icon-yanjing_yincang" wx:if="{{type === 'text'}}" bindtap="eyeClick"></text>
+      </view>
+      <view class="submit-button">
+        <button hover-class="hover-button" type="primary" bindtap="loginEvent">
+          登录
+        </button>
+      </view>
+    </form>
+  </view>
+</view>

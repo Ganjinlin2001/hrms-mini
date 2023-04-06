@@ -1,0 +1,69 @@
+<!-- pages/job/job.wxml -->
+<view class="job-page">
+  <!-- 原来的岗位 -->
+  <!-- 想要申请的新岗位 -->
+  <!-- 申请原因 -->
+  <!-- 申请记录 -->
+  <scroll-view class="nav-scroll-view-panel" scroll-x enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation="true" enhanced="true" show-scrollbar="false">
+    <view class="nav-item {{navId === item.id? 'active': ''}}" wx:for="{{navData}}" wx:key="id" id="{{item.id}}" bindtap="changeNav">
+      <text>{{item.navName}}</text>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y class="content-scroll-view-panel">
+    <view wx:if="{{current === 0}}" class="apply-page">
+      <view class="cell-item">
+        <view class="cell-title">原岗位</view>
+        <view class="cell-label">{{pre_job}}</view>
+      </view>
+      <view class="cell-item">
+        <view class="cell-title">新岗位</view>
+        <input bindinput="getStaffNewJob" value="{{new_job}}" disabled="{{status === 1}}" class="new-job-input-box" placeholder="请填写您要调换的职位" />
+      </view>
+      <block wx:if="{{status == 0}}">
+        <view class="cell-item-textarea">
+          <view class="cell-title">申请原因</view>
+          <textarea bindinput="getReason" class="reason-input-box" placeholder="请输入您的申请缘由"></textarea>
+        </view>
+        <view class="submit-button">
+          <button type="primary" bindtap="handleSumbit">提交</button>
+        </view>
+      </block>
+      <block wx:if="{{status === 1}}">
+        <view class="applying">
+          <text>审核中</text>
+        </view>
+        <view class="cancelApply">
+          <button type="primary" bindtap="cancelApplyEvent">取消申请</button>
+        </view>
+      </block>
+    </view>
+    <view wx:if="{{current === 1}}" class="log-page">
+      <view class="no-data" wx:if="{{allJobData.length == 0}}">
+        <text>无记录~</text>
+      </view>
+      <view class="job-item" wx:for="{{allJobData}}">
+        <view class="left">
+          <view class="left-top">
+            <view class="left-top-pre-job">
+              <text>{{item.pre_job}}</text>
+            </view>
+            <view class="left-top-pre-job">
+              <icon class="iconfont icon-jiantou_xiangyou"></icon>
+            </view>
+            <view class="left-top-new-job">
+              <text>{{item.new_job}}</text>
+            </view>
+          </view>
+          <view class="left-buttom">
+            <text>申请时间： {{item.createAt}}</text>
+          </view>
+        </view>
+        <view class="right">
+          <view class="{{item.statusClass}}">
+            <text>{{item.statusText}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

@@ -1,0 +1,65 @@
+<!-- pages/attendance/attendance.wxml -->
+<view class="page">
+  <!-- 原来的宿舍 -->
+  <!-- 想要申请的新宿舍 -->
+  <!-- 申请原因 -->
+  <!-- 申请记录 -->
+  <scroll-view class="nav-scroll-view-panel" scroll-x enable-flex scroll-into-view="{{'scroll' + navId}}" scroll-with-animation="true" enhanced="true" show-scrollbar="false">
+    <view class="nav-item {{navId === item.id? 'active': ''}}" wx:for="{{navData}}" wx:key="id" id="{{item.id}}" bindtap="changeNav">
+      <text>{{item.navName}}</text>
+    </view>
+  </scroll-view>
+  <scroll-view scroll-y class="content-scroll-view-panel">
+    <view wx:if="{{current === 0}}" class="apply-page">
+      <view class="work-state-panel">
+        <view class="work-item">
+          <view class="work-title">上班打卡</view>
+          <view class="work-state">
+            <view class="no-clock-in" wx:if="{{!start_work_time}}">未打卡</view>
+            <view class="clock-in" wx:if="{{start_work_time}}">已打卡：<text class="clock-in-text" style="color: #07c160;">{{start_work_time}}</text></view>
+          </view>
+        </view>
+        <view class="work-item">
+          <view class="work-title">下班打卡</view>
+          <view class="work-state">
+            <view class="no-clock-in" wx:if="{{!end_work_time}}">未打卡</view>
+            <view class="clock-in" wx:if="{{end_work_time}}">已打卡：<text class="clock-in-text" style="color: #07c160;">{{end_work_time}}</text></view>
+          </view>
+        </view>
+      </view>
+      <view class="attendance-btn-pancel">
+        <view class="{{todayRecord.state == 2 ? 'done btn' : 'btn'}}" data-text="{{sumbitText}}" bindtap="clockInEvent">
+          <text>{{sumbitText}}</text>
+        </view>
+      </view>
+    </view>
+    <view wx:if="{{current === 1}}" class="log-page">
+      <view class="no-data" wx:if="{{allAttendanceData.length === 0}}">
+        <text>无记录~</text>
+      </view>
+      <!-- 需要展示的信息：
+        日期：
+        上班时间：
+        下班时间：
+        总工时： -->
+      <view class="attendance-item" wx:for="{{allAttendanceData}}">
+        <view class="info-item">
+          <view class="info-title">日期</view>
+          <view class="info-content">{{item.date}}</view>
+        </view>
+        <view class="info-item">
+          <view class="info-title">上班时间</view>
+          <view class="info-content">{{item.start_work_time}}</view>
+        </view>
+        <view class="info-item">
+          <view class="info-title">下班时间</view>
+          <view class="info-content">{{item.end_work_time == null ? '未打卡': item.end_work_time}}</view>
+        </view>
+        <view class="info-item">
+          <view class="info-title">总工时</view>
+          <view class="info-content">{{item.on_work_time == null ? '未完成': item.on_work_time}}</view>
+        </view>
+      </view>
+    </view>
+  </scroll-view>
+</view>

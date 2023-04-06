@@ -1,0 +1,17 @@
+/* pages/modifyInfo/modifyInfo.wxss */
+.modify-info-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+}
+
+.birthday-picker {
+  font-size: 40rpx;
+  padding-left: 60rpx;
+}
+
+.submit-container {
+  margin-top: 40rpx;
+}

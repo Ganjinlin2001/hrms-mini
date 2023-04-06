@@ -1,0 +1,38 @@
+<!--pages/leave/leave.wxml-->
+<view class="cell-item">
+  <view class="cell-title">入职时间</view>
+  <view class="cell-label">{{entry_time}}</view>
+</view>
+<view class="cell-item">
+  <view class="cell-title">部门</view>
+  <view class="cell-label">{{department}}</view>
+</view>
+<view class="cell-item">
+  <view class="cell-title">岗位</view>
+  <view class="cell-label">{{job}}</view>
+</view>
+<block wx:if="{{status === 0}}">
+  <view class="cell-item-textarea">
+    <view class="cell-title">申请原因</view>
+    <textarea bindinput="getReason" class="reason-input-box" placeholder="请输入您的申请缘由"></textarea>
+  </view>
+  <view class="submit-button">
+    <button type="primary" bindtap="handleSumbit">提交</button>
+  </view>
+</block>
+<block wx:if="{{status === 1}}">
+  <view class="applying-box">
+    <view class="cell-reason-title">离职申请原因</view>
+    <view class="reason-text">
+      <text user-select="true">{{reason}}</text>
+    </view>
+    <view class="applying">
+      <text>审核中</text>
+    </view>
+    <view class="cancelApply">
+      <button type="primary" bindtap="cancelApplyEvent">取消申请</button>
+    </view>
+  </view>
+
+</block>
+<view class="space"></view>

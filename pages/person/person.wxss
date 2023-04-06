@@ -1,0 +1,83 @@
+/* pages/person/person.wxss */
+.person-page {
+  width: 100vw;
+  height: 100%;
+  background-color: #f5f5f5;
+}
+
+.info-item-img {
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0rpx 40rpx;
+  box-sizing: border-box;
+  margin-bottom: 20rpx;
+}
+
+.info-left-label {
+  font-size: 36rpx;
+}
+
+.avatar {
+  width: 160rpx;
+  height: 160rpx;
+}
+
+.avatar image {
+  width: 100%;
+  height: 100%;
+  border-radius: 20rpx;
+}
+
+.info-right {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.arrow {
+  margin-left: 10rpx;
+}
+
+.info-item {
+  width: 100%;
+  height: 120rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0rpx 40rpx;
+  box-sizing: border-box;
+  /* margin-top: 20rpx; */
+  margin-bottom: 20rpx;
+}
+
+.info-right-text {
+  font-size: 36rpx;
+  color: #474747;
+}
+
+/* .info-item-img {
+  margin-top: 20rpx;
+  width: 100%;
+  height: 200rpx;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #fff;
+  padding: 0rpx 40rpx;
+  box-sizing: border-box;
+} */
+
+.space {
+  width: 100%;
+  height: 200rpx;
+  background-color: #f5f5f5;
+}
