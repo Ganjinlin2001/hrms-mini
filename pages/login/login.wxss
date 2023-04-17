@@ -60,6 +60,15 @@ input {
   font-size: 44rpx;
 }
 
+.middle-pancel {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 20rpx 0rpx;
+  padding: 0rpx 60rpx;
+  line-height: 80rpx;
+}
+
 .submit-button {
   display: flex;
   flex-direction: column;

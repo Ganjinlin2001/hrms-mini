@@ -14,8 +14,12 @@ Page({
       id: 'attendance',
       page: '../../static/images/attendance.png',
     }, {
+      name: '绩效与奖惩',
+      id: 'performance',
+      page: '../../static/images/performance.png',
+    }, {
       name: '公司新闻',
-      id: 'new',
+      id: 'news',
       page: '../../static/images/new.png',
     }, {
       name: '请假',

@@ -1,0 +1,8 @@
+<!--pages/detail/detail.wxml-->
+<view class="detail-page">
+  <view class="title-box">
+    <view class="title">{{articleInfo.title}}</view>
+    <view class="created-time">{{createdTime}}</view>
+  </view>
+  <rich-text space="nbsp" user-select="true" nodes="{{html}}" type='node'></rich-text>
+</view>

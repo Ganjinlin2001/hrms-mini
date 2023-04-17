@@ -1,0 +1,20 @@
+<!--pages/signature/signature.wxml-->
+<view class="page">
+  <view class="signature-panel">
+    <canvas class="canvas" id="signature-board" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" type="2d">
+    </canvas>
+  </view>
+  <view class="tip">
+    提示：请横屏进行签字，然后再点击保存
+  </view>
+  <view class="operation-btns">
+    <button style="width: 160rpx; margin-right: 50rpx;" bindtap="canvasClear">清空</button>
+    <button type="primary" style="width: 160rpx; margin-left: 50rpx;" bindtap="finish">保存</button>
+  </view>
+</view>
+
+<!-- 
+  签名参考链接：
+  http://t.csdn.cn/G1Lt0
+
+ -->

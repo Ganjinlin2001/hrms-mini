@@ -2,7 +2,7 @@
 const app = new getApp();
 
 import {
-  login
+  login, addPerformance
 } from '../../api/index';
 
 Page({
@@ -70,6 +70,20 @@ Page({
     }
   },
 
+  // 跳转到注册页面
+  registerEvent() {
+    wx.navigateTo({
+      url: '/pages/register/register',
+    })
+  },
+
+  // 跳转到忘记密码页面
+  forgetPassword() {
+    wx.navigateTo({
+      url: '/pages/forget/forget',
+    })
+  },
+
   // 登录事件
   async loginEvent() {
     const {
@@ -92,7 +106,28 @@ Page({
     // console.log(typeof login(loginForm));
     login(loginForm).then(res => {
       if (res.data.code === 200) {
-        app.globalData.userInfo = res.data.result.userInfo;
+        const userInfo = res.data.result.userInfo;
+        app.globalData.userInfo = userInfo;
+        // 生成用户的绩效记录
+        // 获取用户的工号，姓名，部门等信息
+        const {
+          code,
+          name,
+          department,
+          job,
+          basic_salary,
+        } = userInfo;
+        const year = new Date().getFullYear();
+        const month = new Date().getMonth() + 1;
+        addPerformance({
+          code,
+          name,
+          department,
+          job,
+          basic_salary,
+          year,
+          month
+        });
         wx.reLaunch({
           url: '/pages/home/home',
         })

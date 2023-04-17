@@ -1,0 +1,14 @@
+<!--pages/news/news.wxml-->
+<scroll-view scroll-y class="news-page">
+  <view class="news-container">
+    <view class="news-item" wx:for="{{newsList}}" data-item="{{item}}" bindtap="toDetailPage">
+      <view class="cover">
+        <image mode="aspectFill" src="{{item.cover}}"></image>
+      </view>
+      <view class="title">
+        <text>{{item.title}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="space"></view>
+</scroll-view>

@@ -80,9 +80,18 @@
   /* justify-content: center; */
 }
 
+.preview-btn {
+  margin: 40rpx 0rpx;
+}
+
 .reason-text {
   padding-top: 20rpx;
   box-sizing: border-box;
+}
+
+.tip {
+  margin-top: 40rpx;
+  color: #595959;
 }
 
 .space {

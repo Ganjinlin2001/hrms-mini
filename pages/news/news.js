@@ -1,18 +1,40 @@
-// pages/new/new.js
+// pages/news/news.js
+
+import {getNewsList} from '../../api/index';
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-
+    // newsList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
+    newsList: [],
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    this.getNewsList();
+  },
 
+  // 获取所有新闻
+  getNewsList() {
+    getNewsList().then(res => {
+      console.log(res);
+      this.setData({
+        newsList: res.data.result,
+      })
+    })
+  },
+
+  toDetailPage(e) {
+    console.log(e);
+    const article_id = e.currentTarget.dataset.item.article_id;
+    wx.navigateTo({
+      url: '/pages/detail/detail?article_id=' + article_id,
+    })
   },
 
   /**

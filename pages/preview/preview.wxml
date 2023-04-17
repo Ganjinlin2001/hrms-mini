@@ -1,0 +1,31 @@
+<!--pages/preview/preview.wxml-->
+<view class="page">
+	<!-- 离职申请书预览 -->
+	<view class="preview">
+		<rich-text user-select="true" nodes="{{ nodes }}"></rich-text>
+	</view>
+	<!-- 签字区域 -->
+	<view class="signature-box" wx:if="{{ !signature_img }}">
+		<view class="title">
+			电子签名
+		</view>
+		<view class="signature-tip" bindtap="navToSignature">
+			点击签字
+		</view>
+		<view wx:if="{{false}}" class="paint-region">
+			<!-- 画板区域 -->
+			<canvas class="canvas" id="signature-board" disable-scroll="true" bindtouchstart="canvasStart" bindtouchmove="canvasMove" bindtouchend="canvasEnd" touchcancel="canvasEnd" type="2d">
+			</canvas>
+		</view>
+		<view wx:if="{{false}}" class="BtnRegion">
+			<!-- 按钮区域，有保存，清空等按钮 -->
+			<button type="primary" size="mini" bind:tap="canvasClear">清空</button>　　　
+			<button type="primary" size="mini" bind:tap="finish">保存</button>
+		</view>
+	</view>
+  <view class="send-box" wx:if="{{ signature_img }}">
+    <button style="margin-bottom: 30rpx;" bindtap="navToSignature">重新签字</button>
+    <button type="primary" bindtap="sumbitSignature">提交签字</button>
+  </view>
+	<view class="space"></view>
+</view>

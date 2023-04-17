@@ -1,0 +1,9 @@
+/* pages/forget/forget.wxss */
+
+.page {
+  padding: 0rpx 40rpx;
+}
+
+.weui-cells::before {
+  content: none;
+}

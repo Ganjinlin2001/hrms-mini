@@ -1,0 +1,18 @@
+/* pages/detail/detail.wxss */
+
+.detail-page {
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.title {
+  padding-bottom: 20rpx;
+  font-size: 40rpx;
+  font-weight: 700;
+}
+
+/* 文章创建时间的样式 */
+.created-time {
+  padding-bottom: 20rpx;
+  font-size: 28rpx;
+}

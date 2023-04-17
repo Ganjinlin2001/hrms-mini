@@ -1,0 +1,27 @@
+<!--pages/performance/performance.wxml-->
+<view class="page">
+  <!-- <view ></view> -->
+  <view class="rows-item" wx:for="{{ rows }}">
+    <view class="rows-item-cell">
+      <view class="label">月份</view>
+      <view class="content">{{item.year}}-{{item.month}}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">绩效</view>
+      <view class="content">{{ item.performance == null ? '暂无' : item.performance}}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">奖惩</view>
+      <view class="content">{{ item.reward == null ? '暂无' : item.reward}}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">基本工资</view>
+      <view class="content">{{ item.basic_salary }}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">实发工资</view>
+      <view class="content">{{ item.real_salary == null ? '暂无' : item.real_salary }}</view>
+    </view>
+  </view>
+  <view class="space"></view>
+</view>

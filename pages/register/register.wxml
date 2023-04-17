@@ -96,6 +96,14 @@
                 <input class="weui-input" bindblur="handleInputChange" value="{{registerForm.dormitory}}" id="dormitory" placeholder="填写您的宿舍，如3#312" type="text" placeholder-class="weui-input__placeholder" />
               </view>
             </view>
+            <view class="weui-cell weui-cell_active">
+              <view class="weui-cell__hd">
+                <label class="weui-label">基本薪资</label>
+              </view>
+              <view class="weui-cell__bd">
+                <input class="weui-input" bindblur="handleInputChange" value="{{registerForm.dormitory}}" id="basic_salary" placeholder="填如实填写您的基本薪资" type="number" placeholder-class="weui-input__placeholder" />
+              </view>
+            </view>
             <!-- 上传员工个人照片 -->
             <view class="weui-cell weui-cell_active">
               <view class="weui-cell__hd">

@@ -153,7 +153,7 @@ Page({
         label: "基本薪资",
         key: "basic_salary",
         value: null,
-        type: "short_text",
+        type: "forbid",
       },
       {
         label: "劳动合同",

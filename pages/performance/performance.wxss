@@ -1,0 +1,36 @@
+/* pages/performance/performance.wxss */
+
+.page {
+  background-color: #f5f5f5;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.rows-item {
+  width: calc(100vw - 60rpx);
+  height: 380rpx;
+  border-radius: 20rpx;
+  background-color: #fff;
+  margin-top: 30rpx;
+  padding: 40rpx;
+  box-sizing: border-box;
+}
+
+.rows-item-cell {
+  display: flex;
+  flex-direction: row;
+  line-height:60rpx;
+}
+
+.label {
+  width: 180rpx;
+  color: #5f5f5f;
+}
+
+.space {
+  width: 100vw;
+  height: 200rpx;
+}

@@ -9,5 +9,5 @@
     </view>
   </view>
   <button type="primary" bindtap="loginEvent">登录</button>
-  <button type="default" class="register" bindtap="registerEvent">注册</button>
+  <!-- <button type="default" class="register" bindtap="registerEvent">注册</button> -->
 </view>

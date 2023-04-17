@@ -19,13 +19,14 @@ Page({
    */
   data: {
     reason: null,
-    status: 0,
+    status: -3,  // 初始状态
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
+    console.log('信息：', app.globalData.userInfo);
     this.setData({
       code: app.globalData.userInfo.code,
       name: app.globalData.userInfo.name,
@@ -47,10 +48,11 @@ Page({
       console.log(res);
       // 如果有记录，展示申请原因和申请状态、撤销申请按钮
       if (res.data.result != undefined) {
+        const lateRecord = res.data.result[res.data.result.length - 1];
         this.setData({
-          status: 1,
-          reason: res.data.result.reason,
-          lateRecord: res.data.result,
+          status: lateRecord.status,
+          reason: lateRecord.reason,
+          lateRecord,
         })
       }
     })
@@ -91,6 +93,22 @@ Page({
     })
   },
 
+  // 查看离职协议书
+  previewEvent() {
+    const {
+      lateRecord
+    } = this.data;
+    wx.navigateTo({
+      url: '/pages/preview/preview',
+      success: function (res) {
+        // 通过eventChannel向被打开页面传送数据
+        res.eventChannel.emit('acceptDataFromOpenerPage', {
+          data: lateRecord
+        })
+      }
+    })
+  },
+
   // 取消申请
   async cancelApplyEvent() {
     const {
@@ -99,7 +117,7 @@ Page({
     } = this.data;
     await cancelLeaveApply({
       code,
-      status: 2,
+      status: -1,
       id: lateRecord.id,
     });
     this.setData({

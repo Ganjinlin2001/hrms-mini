@@ -1,0 +1,57 @@
+/* pages/preview/preview.wxss */
+
+.preview {
+  margin-bottom: 100rpx;
+  width: calc(100vw - 80rpx);
+  height: auto;
+  border: 1rpx solid #8c8c8c;
+  border-radius: 4rpx;
+  box-sizing: border-box;
+  /* padding: 40rpx; */
+  margin: 40rpx;
+  padding-bottom: 100rpx;
+}
+
+.signature-box {
+  width: 100vw;
+  height: 300rpx;
+  margin-top: 100rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  width: 100vw;
+  font-size: 36rpx;
+  font-weight: 700;
+  position: relative;
+  left: 70rpx;
+  margin-bottom: 20rpx;
+}
+
+.title::before {
+  position: absolute;
+  content: "";
+  width: 15rpx;
+  height: 50rpx;
+  background-color: #1aad19;
+  left: -30rpx;
+}
+
+.signature-tip {
+  width: calc(100vw - 80rpx);
+  height: 300rpx;
+  border-radius: 10rpx;
+  background-color: #f0f0f0;
+  text-align: center;
+  line-height: 300rpx;
+  color: #8c8c8c;
+}
+
+
+.space {
+  width: 100%;
+  height: 200rpx;
+  background-color: #fff;
+}

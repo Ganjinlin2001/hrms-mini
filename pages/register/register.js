@@ -1,7 +1,9 @@
 // pages/register/register.js
 const app = new getApp();
 // const {checkAdminCode} = require('../../api/index');
-import {register} from '../../api/index';
+import {
+  register
+} from '../../api/index';
 Page({
 
   /**
@@ -20,6 +22,7 @@ Page({
       job: null,
       department: null,
       dormitory: null,
+      basic_salary: null,
       // avatar: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/1679115992455.png?sign=020adbf2b9e81f717cce74839101c54e&t=1679116453', // 用户头像链接
       labor_contract: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/default_avatar.png?sign=68cdf385185d76a2078c22ac0205e034&t=1679244569',
       avatar: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/default_avatar.png?sign=68cdf385185d76a2078c22ac0205e034&t=1679244569',
@@ -72,7 +75,9 @@ Page({
   },
 
   handleVerifyPwd(e) {
-    const {password} = this.data.registerForm;
+    const {
+      password
+    } = this.data.registerForm;
     if (password === null || password === '') {
       wx.showModal({
         title: '提示',
@@ -190,7 +195,9 @@ Page({
 
   // 提交注册信息
   handleSubmit() {
-    const {registerForm} = this.data;
+    const {
+      registerForm
+    } = this.data;
     for (const value of Object.values(registerForm)) {
       if (value === null || value === "") {
         wx.showModal({

@@ -1,88 +1,53 @@
-// pages/modifyInfo/modifyInfo.js
-const app = new getApp();
+// pages/forget/forget.js
+
 import {
-  updateStaffInfo,
-  changePassword,
-  getVerifyCode
-} from "../../api/index";
+  getVerifyCode, changePassword
+} from '../../api/index';
+
 Page({
+
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: null,
-    genderRadio: [{
-        name: "男",
-        value: '1',
-        checked: false,
-      },
-      {
-        name: "女",
-        value: '0',
-        checked: false,
-      },
-    ],
-    changePwdForm: {
+    submitForm: {
+      code: null,
       password: null,
       verifyPwd: null,
-      verifyCode: null,
       email: null,
+      verifyCode: null,
     },
     canSendCode: false, // 设置是否可以发送验证码
     captchaTime: 60, // 验证码倒计时
-    // birthday: null,
-    // propsData: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options);
-    const {
-      genderRadio
-    } = this.data;
-    for (let item of genderRadio) {
-      if (item.value === app.globalData.userInfo.gender) {
-        item.checked = true;
-      }
-    }
-    this.setData({
-      userInfo: app.globalData.userInfo,
-      type: options.type,
-      key: options.key,
-      genderRadio,
-      value: options.value,
-      label: options.label,
-    });
+
   },
 
+  // 统一获取用户的输入
   handleInputChange(e) {
-    console.log(e);
+    console.log(e.target.id);
     this.setData({
-      value: e.detail.value,
-    });
-  },
-
-  // 获取密码
-  handlePwdInputChange(e) {
-    this.setData({
-      [`changePwdForm.${e.target.id}`]: e.detail.value,
-    });
+      [`submitForm.${e.target.id}`]: e.detail.value
+    })
   },
 
   // 确认密码
   handleVerifyPwd(e) {
     const {
       password
-    } = this.data.changePwdForm;
+    } = this.data.submitForm;
     if (password === null || password === '') {
       wx.showModal({
         title: '提示',
         content: '请先输入密码再确认密码',
         success: res => {
           this.setData({
-            ['changePwdForm.verifyPwd']: null,
+            ['submitForm.verifyPwd']: null,
           })
         }
       })
@@ -93,7 +58,7 @@ Page({
       })
     } else {
       this.setData({
-        ['changePwdForm.verifyPwd']: e.detail.value,
+        ['submitForm.verifyPwd']: e.detail.value,
       })
     }
   },
@@ -109,7 +74,7 @@ Page({
         clearInterval(this.data.interval);
         this.setData({
           canSendCode: false,
-          captchaTime: 60,
+          captchaTime: 60
         })
         // this.canSendCode = false;
         // this.captchaTime = this.fixedSecond2;
@@ -124,10 +89,10 @@ Page({
       return
     };
     clearTimeout(timer1);
-    console.log("邮箱：", this.data.changePwdForm.email);
+    console.log("邮箱：", this.data.submitForm.email);
     let {
       email
-    } = this.data.changePwdForm;
+    } = this.data.submitForm;
     console.log("email: ", email);
     // 先查看邮箱是否填写
     if (email === null) {
@@ -156,95 +121,82 @@ Page({
     this.countdownFun60();
   },
 
-  // 性别选择
-  radioChange(e) {
-    console.log(e);
-    this.setData({
-      value: e.detail.value,
-    });
-  },
-
-  bindMultiPickerChange(e) {
-    console.log(e.detail.value);
-    this.setData({
-      value: e.detail.value,
-    });
-  },
-
-  submitChange() {
+  // 提交表单，重置密码
+  submitEvent() {
     const {
-      userInfo,
-      type,
-      key,
-      value,
-      changePwdForm
+      submitForm
     } = this.data;
-    console.log('userInfo: ', userInfo);
-    if (type != 'password') {
-      updateStaffInfo({
-        code: userInfo.code,
-        [key]: value,
-      }).then(res => {
-        console.log(res);
-        wx.navigateBack({
-          url: '/pages/home/home',
-          // url: '/pages/person/person?id=' + userInfo.id,
+    for (const value of Object.values(submitForm)) {
+      if (value === null || value === "") {
+        wx.showModal({
+          title: '提示',
+          content: '请填写完整的注册信息'
         })
-      });
-    } else {
-      changePwdForm.code = userInfo.code;
-      changePassword(changePwdForm).then(res => {
-        if (res.data.code !== 200) {
-          wx.showModal({
-            title: '提示',
-            content: res.data.message
-          })
-          return;
-        }
-        // console.log('密码修改结果：', res);
-        wx.hideLoading()
-        wx.showToast({
-          title: '密码重置成功',
-        })
-        wx.reLaunch({
-          url: '/pages/index/index',
-        })
-      });
+        return;
+      }
     }
+    // 发请求
+    wx.showLoading({
+      title: '密码重置中',
+      mask: true,
+    })
+    changePassword(submitForm).then(res => {
+      wx.hideLoading()
+      wx.showToast({
+        title: '密码重置成功',
+      })
+      wx.reLaunch({
+        url: '/pages/index/index',
+      })
+    });
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
-  onReady() {},
+  onReady() {
+
+  },
 
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow() {},
+  onShow() {
+
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide() {},
+  onHide() {
+
+  },
 
   /**
    * 生命周期函数--监听页面卸载
    */
-  onUnload() {},
+  onUnload() {
+
+  },
 
   /**
    * 页面相关事件处理函数--监听用户下拉动作
    */
-  onPullDownRefresh() {},
+  onPullDownRefresh() {
+
+  },
 
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom() {},
+  onReachBottom() {
+
+  },
 
   /**
    * 用户点击右上角分享
    */
-  onShareAppMessage() {},
-});
+  onShareAppMessage() {
+
+  }
+})

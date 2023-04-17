@@ -5,6 +5,8 @@
   <!-- 第二种：短输入框 -->
   <!-- 第三种：长输入框 -->
   <!-- 第四种：生日，日期选择器 -->
+  <!-- 第五种：密码重置 -->
+
   <!-- 第一种：性别选择 -->
   <view class="gender-container" wx:if="{{type === 'gender'}}">
     <radio-group bindchange="radioChange">
@@ -42,10 +44,46 @@
   <view class="birthday-picker" wx:if="{{type === 'birthday'}}">
     <!-- <view class="weui-cells__title" style="font-size: 40rpx;">{{label}}</view> -->
     <picker mode="date" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
-    <view class="picker">
-      生日：{{value}}
+      <view class="picker">
+        生日：{{value}}
+      </view>
+    </picker>
+  </view>
+  <!-- 第五种：密码重置 -->
+  <view class="weui-cells change-password-box">
+    <label class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <text class="weui-label">密码</text>
+      </view>
+      <view class="weui-cell__bd weui-flex">
+        <input id="password" bindinput="handlePwdInputChange" class="weui-input" type="password" placeholder="请输入您的密码" />
+      </view>
+    </label>
+    <label class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <text class="weui-label">确认密码</text>
+      </view>
+      <view class="weui-cell__bd weui-flex">
+        <input id="verifyPwd" bindblur="handleVerifyPwd" class="weui-input" type="password" placeholder="请确认您的密码" />
+      </view>
+    </label>
+    <label class="weui-cell weui-cell_active">
+      <view class="weui-cell__hd">
+        <text class="weui-label">邮箱</text>
+      </view>
+      <view class="weui-cell__bd weui-flex">
+        <input id="email" bindinput="handlePwdInputChange" class="weui-input" type="text" placeholder="请输入验证的邮箱" />
+      </view>
+    </label>
+    <view class="weui-cell weui-cell_active weui-cell_vcode weui-cell_wrap">
+      <view class="weui-cell__hd">
+        <text class="weui-label">验证码</text>
+      </view>
+      <view class="weui-cell__bd weui-flex" >
+        <input bindinput="handlePwdInputChange" id="verifyCode" class="weui-input" style="height: 110rpx; line-height: 110rpx;" type="text" placeholder="输入验证码" />
+        <button bindtap="sendVerifyCode" class="js_target weui-cell__control weui-btn weui-btn_default weui-vcode-btn">{{ canSendCode ? captchaTime + "秒后重试" : "获取验证码" }}</button>
+      </view>
     </view>
-  </picker>
   </view>
   <view class="submit-container">
     <button type="primary" bindtap="submitChange">提交修改</button>

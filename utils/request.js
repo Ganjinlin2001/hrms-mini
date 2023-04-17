@@ -14,6 +14,7 @@ const request = ({
   // return new Promise();
   return new Promise((resolve, reject) => {
     // console.warn("test");
+    // 实际发请求的地方
     wx.request({
       url: baseURL + url,
       method,
@@ -32,10 +33,12 @@ const request = ({
           })
         } else {
           if (res.data.result != undefined) {
-            wx.showToast({
-              title: res.data.message,
-              icon: 'success',
-            })
+            if (res.data.message) {
+              wx.showToast({
+                title: res.data.message,
+                icon: 'success',
+              })
+            }
           }
         }
         console.log(4);

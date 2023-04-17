@@ -12,6 +12,14 @@
         <text class="eye-icon iconfont icon-yanjing" wx:if="{{type === 'password'}}" bindtap="eyeClick"></text>
         <text class="eye-icon iconfont icon-yanjing_yincang" wx:if="{{type === 'text'}}" bindtap="eyeClick"></text>
       </view>
+      <view class="middle-pancel">
+        <view class="mid-item" bindtap="registerEvent">
+          <text>没有账号？注册一个</text>
+        </view>
+        <view class="mid-item" bindtap="forgetPassword">
+          <text>忘记密码</text>
+        </view>
+      </view>
       <view class="submit-button">
         <button hover-class="hover-button" type="primary" bindtap="loginEvent">
           登录

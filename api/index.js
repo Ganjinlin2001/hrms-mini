@@ -1,5 +1,6 @@
 import request from '../utils/request';
 import method from '../utils/method';
+import methods from '../utils/method';
 // 员工注册接口
 export function register(data) {
   return request({
@@ -134,6 +135,13 @@ export function cancelLeaveApply(data) {
   });
 }
 
+export async function updateStaffLeaveInfo(data) {
+  return await request({
+    url: '/api/leave/updateLeave',
+    method: method.POST,
+    data,
+  })
+}
 
 // 请假相关
 // 获取某个员工所有的请假记录
@@ -203,6 +211,59 @@ export function updateStaffAttendanceInfo(data) {
   request({
     url: '/api/attendance/updateStaffAttendanceInfo',
     method: method.POST,
+    data,
+  })
+}
+
+// 公司新闻相关接口
+export async function getNewsList(data) {
+  return await request({
+    url: '/api/news/staffGetNewsList',
+    method: method.GET,
+    data,
+  })
+}
+
+export async function getArticleInfo(data) {
+  return await request({
+    url: '/api/news/getArticleInfo',
+    method: method.GET,
+    data,
+  })
+}
+
+// 获取验证码
+export async function getVerifyCode(data) {
+  return await request({
+    url: '/api/code',
+    method: method.GET,
+    data,
+  })
+}
+
+// 修改密码
+export function changePassword(data) {
+  return request({
+    url: '/api/staff/changePassword',
+    method: method.POST,
+    data,
+  })
+}
+
+// 创建员工的一条绩效记录
+export function addPerformance(data) {
+  return request({
+    url: '/api/performance/addPerformance',
+    method: method.POST,
+    data,
+  })
+}
+
+// 获取员工所有的绩效
+export async function getStaffAllPerformanceList(data) {
+  return await request({
+    url: '/api/performance/getStaffAllPerformanceList',
+    method: method.GET,
     data,
   })
 }

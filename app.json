@@ -4,7 +4,6 @@
     "pages/register/register",
     "pages/login/login",
     "pages/home/home",
-    "pages/new/new",
     "pages/attendance/attendance",
     "pages/vacate/vacate",
     "pages/job/job",
@@ -12,7 +11,14 @@
     "pages/department/department",
     "pages/leave/leave",
     "pages/person/person",
-    "pages/modifyInfo/modifyInfo"
+    "pages/modifyInfo/modifyInfo",
+    "pages/test01/test01",
+    "pages/news/news",
+    "pages/detail/detail",
+    "pages/forget/forget",
+    "pages/performance/performance",
+    "pages/preview/preview",
+    "pages/signature/signature"
   ],
   "window": {
     "backgroundTextStyle": "light",

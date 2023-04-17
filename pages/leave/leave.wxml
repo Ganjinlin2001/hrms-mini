@@ -11,7 +11,7 @@
   <view class="cell-title">岗位</view>
   <view class="cell-label">{{job}}</view>
 </view>
-<block wx:if="{{status === 0}}">
+<block wx:if="{{status === -3}}">
   <view class="cell-item-textarea">
     <view class="cell-title">申请原因</view>
     <textarea bindinput="getReason" class="reason-input-box" placeholder="请输入您的申请缘由"></textarea>
@@ -20,19 +20,36 @@
     <button type="primary" bindtap="handleSumbit">提交</button>
   </view>
 </block>
-<block wx:if="{{status === 1}}">
+<block wx:if="{{status !== -3}}">
   <view class="applying-box">
     <view class="cell-reason-title">离职申请原因</view>
     <view class="reason-text">
       <text user-select="true">{{reason}}</text>
     </view>
     <view class="applying">
-      <text>审核中</text>
+      <text wx:if="{{status === 1}}">审核中</text>
+      <text wx:if="{{status === 2}}">待签字</text>
+      <text wx:if="{{status === 3}}">待公司确认</text>
     </view>
-    <view class="cancelApply">
+    <view class="preview-btn" wx:if="{{status === 2}}">
+      <button bindtap="previewEvent">查看离职协议书</button>
+    </view>
+    <view wx:if="{{ status !== 3 }}" class="cancelApply">
       <button type="primary" bindtap="cancelApplyEvent">取消申请</button>
     </view>
+    <view class="tip" wx:if="{{ status === 2 }}">
+      <text user-select="{{true}}">提示：您签字确认之后将无法取消申请</text>
+    </view>
+    <view class="tip" wx:if="{{ status === 3 }}">
+      <text user-select="{{true}}">提示：您的离职协议书的签字已经提交给公司审核，公司确认您的签名无误之后将会向您的邮箱下发离职协议书，请关注您个人信息中留下的电子邮件信息，另外，收到邮件之后，您将无法再次使用本小程序提供的服务。</text>
+    </view>
   </view>
-
 </block>
 <view class="space"></view>
+
+<!-- 
+  测试账号：
+  员工账号：0007
+  密码：11111
+
+ -->
