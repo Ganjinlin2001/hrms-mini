@@ -26,7 +26,6 @@ Page({
       // avatar: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/1679115992455.png?sign=020adbf2b9e81f717cce74839101c54e&t=1679116453', // 用户头像链接
       labor_contract: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/default_avatar.png?sign=68cdf385185d76a2078c22ac0205e034&t=1679244569',
       avatar: 'https://6872-hrms-env-9gxu769jef44e565-1317210907.tcb.qcloud.la/avatar/default_avatar.png?sign=68cdf385185d76a2078c22ac0205e034&t=1679244569',
-      openid: null,
     },
     ganderItems: [{
         name: '男',
@@ -45,9 +44,9 @@ Page({
    */
   onLoad(options) {
     console.log(app);
-    this.setData({
-      [`registerForm.openid`]: app.globalData.openid,
-    })
+    // this.setData({
+    //   [`registerForm.openid`]: app.globalData.openid,
+    // })
   },
 
 

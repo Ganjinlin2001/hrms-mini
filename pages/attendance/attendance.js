@@ -62,7 +62,7 @@ Page({
   // 获取员工所有的考勤记录
   getStaffAllAttendanceRecord() {
     const { code } = this.data;
-    getStaffAllAttendanceRecord({ code }).then((res) => {
+    getStaffAllAttendanceRecord({ keyWord: code }).then((res) => {
       console.log(res);
       this.setData({
         allAttendanceData: res.data.result,

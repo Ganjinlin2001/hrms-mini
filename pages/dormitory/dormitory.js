@@ -125,7 +125,7 @@ Page({
       url: 'http://127.0.0.1:7001/api/dormitory/getLate',
       method: 'GET',
       data: {
-        code,
+        keyWord: code,
       },
       header: {
         'content-type': 'application/json' // 默认值

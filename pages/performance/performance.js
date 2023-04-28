@@ -32,7 +32,7 @@ Page({
       code
     } = this.data;
     getStaffAllPerformanceList({
-      code
+      keyWord: code
     }).then(res => {
       console.log(res);
       this.setData({

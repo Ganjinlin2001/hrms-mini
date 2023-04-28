@@ -11,8 +11,16 @@
       <view class="content">{{ item.performance == null ? '暂无' : item.performance}}</view>
     </view>
     <view class="rows-item-cell">
+      <view class="label">绩效工资</view>
+      <view class="content">{{ item.performance_salary == null ? '暂无' : item.performance_salary}}</view>
+    </view>
+    <view class="rows-item-cell">
       <view class="label">奖惩</view>
       <view class="content">{{ item.reward == null ? '暂无' : item.reward}}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">奖惩工资</view>
+      <view class="content">{{ item.reward_salary == null ? '暂无' : item.reward_salary}}</view>
     </view>
     <view class="rows-item-cell">
       <view class="label">基本工资</view>
@@ -21,6 +29,10 @@
     <view class="rows-item-cell">
       <view class="label">实发工资</view>
       <view class="content">{{ item.real_salary == null ? '暂无' : item.real_salary }}</view>
+    </view>
+    <view class="rows-item-cell">
+      <view class="label">说明</view>
+      <view class="content">实发工资=绩效工资+奖惩工资+基本工资</view>
     </view>
   </view>
   <view class="space"></view>

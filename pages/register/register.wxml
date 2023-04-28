@@ -101,7 +101,7 @@
                 <label class="weui-label">基本薪资</label>
               </view>
               <view class="weui-cell__bd">
-                <input class="weui-input" bindblur="handleInputChange" value="{{registerForm.dormitory}}" id="basic_salary" placeholder="填如实填写您的基本薪资" type="number" placeholder-class="weui-input__placeholder" />
+                <input class="weui-input" bindblur="handleInputChange" value="{{registerForm.basic_salary}}" id="basic_salary" placeholder="填如实填写您的基本薪资" type="number" placeholder-class="weui-input__placeholder" />
               </view>
             </view>
             <!-- 上传员工个人照片 -->

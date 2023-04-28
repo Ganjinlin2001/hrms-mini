@@ -19,7 +19,7 @@ Page({
    */
   data: {
     reason: null,
-    status: -3,  // 初始状态
+    status: -1,  // 初始状态
   },
 
   /**
@@ -50,7 +50,7 @@ Page({
       if (res.data.result != undefined) {
         const lateRecord = res.data.result[res.data.result.length - 1];
         this.setData({
-          status: lateRecord.status,
+          status: lateRecord.status === -2 ? -1 : lateRecord.status,
           reason: lateRecord.reason,
           lateRecord,
         })
@@ -121,7 +121,7 @@ Page({
       id: lateRecord.id,
     });
     this.setData({
-      status: 0,
+      status: -1,
       reason: null,
     })
     // 重新获取数据
