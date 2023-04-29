@@ -1,0 +1,31 @@
+<!--pages/jobDetail/jobDetail.wxml-->
+<view class="job-detail-page">
+  <view class="header-box">
+    <view class="header-box_top">
+      <view class="job-name">
+        <text>{{jobDetail.name}}</text>
+      </view>
+      <view class="job-salary">
+        <text>{{jobDetail.salary}}</text>
+      </view>
+    </view>
+    <view class="header-box_bottom">
+      <view class="job-city">
+        <icon class="iconfont icon-didian"></icon>
+        <text decode>&nbsp;{{jobDetail.city}}</text>
+      </view>
+      <view class="job-experiece">
+        <icon class="iconfont icon-jingyan"></icon>
+        <text decode>&nbsp;{{jobDetail.experiece}}</text>
+      </view>
+      <view class="job-degree">
+        <icon class="iconfont icon-edu-line"></icon>
+        <text decode>&nbsp;{{jobDetail.degree}}</text>
+      </view>
+    </view>
+  </view>
+  <view class="job-content">
+    <text>{{jobDetail.desc}}</text>
+  </view>
+  <view class="space"></view>
+</view>

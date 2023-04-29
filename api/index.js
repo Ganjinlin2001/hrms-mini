@@ -232,6 +232,15 @@ export async function getArticleInfo(data) {
   })
 }
 
+// 搜索公司新闻
+export async function searchNewsByKeyWord(data) {
+  return await request({
+    url: '/api/news/searchNewsByKeyWord',
+    method: method.GET,
+    data,
+  })
+}
+
 // 获取验证码
 export async function getVerifyCode(data) {
   return await request({
@@ -263,6 +272,24 @@ export function addPerformance(data) {
 export async function getStaffAllPerformanceList(data) {
   return await request({
     url: '/api/performance/getStaffAllPerformanceList',
+    method: method.GET,
+    data,
+  })
+}
+
+// 按关键词获取招聘信息
+export async function searchJobByKeyWord(data) {
+  return await request({
+    url: '/api/recruitment/search',
+    method: method.GET,
+    data,
+  })
+}
+
+// 获取所有的招聘信息
+export async function getJobList(data) {
+  return await request({
+    url: '/api/recruitment/getJobList',
     method: method.GET,
     data,
   })

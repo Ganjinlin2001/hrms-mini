@@ -57,7 +57,7 @@
             <text user-select="true">结束时间：{{item.end_time}}</text>
           </view>
           <view class="left-item">
-            <text user-select="true">申请时间：{{item.createAt}}</text>
+            <text user-select="true">申请时间：{{item.createdAt}}</text>
           </view>
         </view>
         <view class="right">

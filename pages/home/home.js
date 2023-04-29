@@ -22,6 +22,10 @@ Page({
       id: 'news',
       page: '../../static/images/new.png',
     }, {
+      name: '招聘信息',
+      id: 'recruitment',
+      page: '../../static/images/recruitment.png',
+    }, {
       name: '请假',
       id: 'vacate',
       page: '../../static/images/vacate.png',

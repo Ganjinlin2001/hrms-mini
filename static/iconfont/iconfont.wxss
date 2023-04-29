@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 3962005 */
-  src: url('//at.alicdn.com/t/c/font_3962005_lw5rx0dw3sn.woff2?t=1680619092442') format('woff2'),
-       url('//at.alicdn.com/t/c/font_3962005_lw5rx0dw3sn.woff?t=1680619092442') format('woff'),
-       url('//at.alicdn.com/t/c/font_3962005_lw5rx0dw3sn.ttf?t=1680619092442') format('truetype');
+  src: url('//at.alicdn.com/t/c/font_3962005_w5qzktbbbj.woff2?t=1682750380564') format('woff2'),
+       url('//at.alicdn.com/t/c/font_3962005_w5qzktbbbj.woff?t=1682750380564') format('woff'),
+       url('//at.alicdn.com/t/c/font_3962005_w5qzktbbbj.ttf?t=1682750380564') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,26 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-jingyan:before {
+  content: "\e613";
+}
+
+.icon-didian:before {
+  content: "\e61c";
+}
+
+.icon-edu-line:before {
+  content: "\e63a";
+}
+
+.icon-sousuo:before {
+  content: "\e621";
+}
+
+.icon-quxiao:before {
+  content: "\e666";
 }
 
 .icon-zhengque:before {

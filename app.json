@@ -18,7 +18,9 @@
     "pages/forget/forget",
     "pages/performance/performance",
     "pages/preview/preview",
-    "pages/signature/signature"
+    "pages/signature/signature",
+    "pages/recruitment/recruitment",
+    "pages/jobDetail/jobDetail"
   ],
   "window": {
     "backgroundTextStyle": "light",

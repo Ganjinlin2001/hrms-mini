@@ -74,7 +74,7 @@ Page({
             // console.log(day(res.data.result[0].createdAt));
             const allDormitoryData = res.data.result.map(item => {
               console.log(item);
-              item.createAt = day(item.createAt);
+              item.createdAt = day(item.createdAt);
               switch (item.status) {
                 case 1: {
                   item.statusText = '已通过';

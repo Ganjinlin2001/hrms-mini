@@ -55,7 +55,7 @@
             </view>
           </view>
           <view class="left-buttom">
-            <text>申请时间： {{item.createAt}}</text>
+            <text>申请时间： {{item.createdAt}}</text>
           </view>
         </view>
         <view class="right">

@@ -1,49 +1,22 @@
-// pages/detail/detail.js
-
-import {
-  getArticleInfo
-} from '../../api/index';
-
-import {
-  day
-} from "../../utils/day";
-
+// pages/jobDetail/jobDetail.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    articleInfo: null,
-    html: null,
-    createdTime: null,
+    jobDetail: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options);
-    const {
-      article_id
-    } = options;
-    this.getArticleInfo({
-      article_id
-    });
-  },
-
-  getArticleInfo({
-    article_id
-  }) {
-    getArticleInfo({
-      article_id
-    }).then(res => {
-      console.log(res);
-      this.setData({
-        articleInfo: res.data.result,
-        html: res.data.result.html.replace(/\<img/g, '<img style="width:100%;heightauto;display:block"'),
-        createdTime: day(res.data.result.createdAt),
-      })
+    const pages = getCurrentPages();
+    const prevPage = pages[pages.length - 2]; //上一个页面（父页面）
+    console.log(prevPage);
+    this.setData({
+      jobDetail: prevPage.data.currentItem,
     })
   },
 

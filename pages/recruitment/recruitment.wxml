@@ -1,0 +1,118 @@
+<!--pages/recruitment/recruitment.wxml-->
+<view class="recruitment-page">
+  <scroll-view class="scroller" scroll-y enable-flex>
+    <!-- 头部搜索框 -->
+    <view class="search-bar__box">
+      <view class="search-left-input-label">
+        <view class="search-icon">
+          <icon class="iconfont icon-sousuo"></icon>
+        </view>
+        <view class="search-input">
+          <input value="{{keyWord}}" type="text" bindinput="bindinputEvent" placeholder="请输入关键词搜索" />
+        </view>
+        <view wx:if="{{searching}}" class="cancel-icon" bindtap="cancelSearch">
+          <icon class="iconfont icon-quxiao"></icon>
+        </view>
+      </view>
+      <view class="search-btn">
+        <text wx:if="{{searching}}" bindtap="cancelSearch">取消</text>
+        <text wx:else bindtap="searchEvent">搜索</text>
+      </view>
+    </view>
+    <!-- 数据列表 -->
+    <view class="list-item" wx:if="{{!searching}}" wx:for="{{dataList}}">
+      <view class="list-row">
+        <view class="list-row_label">岗位名称</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.name}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">薪资</view>
+        <view class="list-row_content">
+          <text user-select="true" style="color: #e64340;">{{item.salary}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">城市</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.city}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">学历要求</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.degree}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">工作经验</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.experiece}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">发布时间</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.createdAt}}</text>
+        </view>
+      </view>
+      <view class="look-more" hover-class="hover" data-item="{{item}}" bindtap="lookMore">
+        <view class="list-more_label">查看更多</view>
+        <icon class="list-more_content iconfont icon-xiangyou1"></icon>
+      </view>
+    </view>
+
+    <!-- 搜索结果列表 -->
+    <view class="list-item" wx:if="{{searching}}" wx:for="{{dataList}}">
+      <view class="list-row">
+        <view class="list-row_label">岗位名称</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.name}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">薪资</view>
+        <view class="list-row_content">
+          <text user-select="true" style="color: #e64340;">{{item.salary}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">城市</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.city}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">学历要求</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.degree}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">工作经验</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.experiece}}</text>
+        </view>
+      </view>
+      <view class="list-row">
+        <view class="list-row_label">发布时间</view>
+        <view class="list-row_content">
+          <text user-select="true">{{item.createdAt}}</text>
+        </view>
+      </view>
+      <view class="look-more" hover-class="hover" data-item="{{item}}" bindtap="lookMore">
+        <view class="list-more_label">查看更多</view>
+        <icon class="list-more_content iconfont icon-xiangyou1"></icon>
+      </view>
+    </view>
+    <view class="no-data" wx:if="{{searching && dataList.length == 0}}">
+      <text>没有相关岗位信息</text>
+    </view>
+    <view class="space">
+      <view wx:for="[1]">
+        <text decode>&nbsp;&nbsp;&nbsp;&nbsp;</text>
+      </view>
+    </view>
+  </scroll-view>
+</view>

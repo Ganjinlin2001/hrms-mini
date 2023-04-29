@@ -1,28 +1,44 @@
-// pages/news/news.js
+// pages/recruitment/recruitment.js
 
 import {
-  getNewsList,
-  searchNewsByKeyWord
+  searchJobByKeyWord,
+  getJobList
 } from '../../api/index';
-
+import {
+  day
+} from "../../utils/day";
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    // newsList: [1, 2, 3, 4, 5, 6, 7, 8, 9],
-    newsList: [],
-    keyWord: '',
+    keyWord: null,
+    dataList: [],
     searching: false,
     timer: null,
+    currentItem: null,
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    this.getNewsList();
+    this.getDataList();
+  },
+
+  getDataList() {
+    getJobList().then(res => {
+      console.log(res);
+      const data = res.data.result.rows.map(item => {
+        item.createdAt = day(item.createdAt);
+        // console.log(item.createdAt);
+        return item;
+      })
+      this.setData({
+        dataList: data,
+      })
+    })
   },
 
   // 获取搜索关键词
@@ -44,10 +60,17 @@ Page({
       // if (value)
       timer = setTimeout(() => {
         console.log('发送请求，关键词：', this.data.keyWord);
-        searchNewsByKeyWord({keyWord: this.data.keyWord}).then(res => {
+        searchJobByKeyWord({
+          keyWord: this.data.keyWord
+        }).then(res => {
           console.log(res);
+          const data = res.data.result.rows.map(item => {
+            item.createdAt = day(item.createdAt);
+            // console.log(item.createdAt);
+            return item;
+          })
           this.setData({
-            newsList: res.data.result.rows,
+            dataList: data,
           })
         })
       }, 500);
@@ -69,7 +92,7 @@ Page({
         keyWord: null,
         searching: false,
       })
-      this.getNewsList();
+      this.getDataList();
     }
   },
 
@@ -85,21 +108,14 @@ Page({
     }
   },
 
-  // 获取所有新闻
-  getNewsList() {
-    getNewsList().then(res => {
-      console.log(res);
-      this.setData({
-        newsList: res.data.result,
-      })
-    })
-  },
-
-  toDetailPage(e) {
+  // 跳转到详情页
+  lookMore(e) {
     console.log(e);
-    const article_id = e.currentTarget.dataset.item.article_id;
+    this.setData({
+      currentItem: e.currentTarget.dataset.item,
+    })
     wx.navigateTo({
-      url: '/pages/detail/detail?article_id=' + article_id,
+      url: '/pages/jobDetail/jobDetail',
     })
   },
 

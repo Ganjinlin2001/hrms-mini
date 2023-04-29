@@ -3,7 +3,8 @@
 */
 
 // 请求地址
-const baseURL = 'http://127.0.0.1:7001';
+// http://10.33.113.37:4001
+const baseURL = 'http://10.33.6.75:7001';
 
 const request = ({
   url,

@@ -1,0 +1,141 @@
+.recruitment-page {
+
+  // width: 100vw;
+  // height: 100%;
+  // background-color: #f5f5f5;
+
+  // display: flex;
+  // flex-direction: column;
+  // align-items: center;
+
+  .scroller {
+    width: 100vw;
+    height: 100vh;
+    background-color: #f5f5f5;
+  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // 头部搜索框
+    .search-bar__box {
+      height: 120rpx;
+      // line-height: 84rpx;
+      padding: 0 32rpx;
+      background: #f5f5f5;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
+      // 搜索输入框
+      .search-left-input-label {
+        width: calc(100vw - 68rpx - 96rpx);
+        height: 64rpx;
+        line-height: 64rpx;
+        background-color: #fff;
+        padding: 0rpx 12rpx;
+        box-sizing: border-box;
+        border-radius: 8rpx;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        position: relative;
+
+        .search-input {
+          // line-height: 64rpx;
+          padding-left: 12rpx;
+          width: calc(100% - 80rpx);
+          line-height: 1;
+        }
+
+        .cancel-icon {
+          text-align: center;
+          width: 44rpx;
+          height: 63rpx;
+          line-height: 1;
+          z-index: 100;
+          position: absolute;
+          right: 0rpx;
+          color: #0303037c;
+        }
+      }
+
+      // 搜索按钮
+      .search-btn {
+        width: 96rpx;
+        text-align: center;
+        font-weight: 700;
+        // color: #576b95;
+        color: var(--linkTextColor);
+      }
+    }
+
+    .list-item {
+      margin-top: 32rpx;
+      // margin-bottom: 32rpx;
+      width: calc(100vw - 64rpx);
+      background-color: #fff;
+      padding: 32rpx;
+      box-sizing: border-box;
+      border-radius: 10rpx;
+
+      .list-row {
+        padding: 16rpx 0rpx;
+        display: flex;
+        flex-direction: row;
+
+        .list-row_label {
+          width: 180rpx;
+          color: #5f5f5f;
+        }
+      }
+
+      .look-more {
+        position: relative;
+        width: 100%;
+        // background-color: rgb(126, 126, 126);
+        padding: 16rpx 0rpx 0rpx 0rpx;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+
+        .list-more_label {
+          // line-height: 30rpx;
+          height: 60rpx;
+          line-height: 60rpx;
+        }
+
+        .list-more_content {
+          height: 60rpx;
+          line-height: 60rpx;
+        }
+      }
+
+      .look-more::before {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 1rpx;
+        top: 8rpx;
+        background-color: #f5f5f5;
+      }
+
+      .hover {
+        opacity: .8;
+      }
+    }
+
+    .no-data {
+      margin-top: 100rpx;
+      color: #5f5f5f;
+      font-size: 42rpx;
+    }
+
+    .space {
+      width: 100%;
+      height: 200rpx;
+      background-color: #f5f5f5;
+    }
+  }
+
+
+}
