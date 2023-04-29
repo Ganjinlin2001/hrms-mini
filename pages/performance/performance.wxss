@@ -9,6 +9,12 @@
   align-items: center;
 }
 
+.remark {
+  width: 100vw;
+  padding: 32rpx;
+  box-sizing: border-box;
+}
+
 .rows-item {
   width: calc(100vw - 60rpx);
   /* height: 380rpx; */

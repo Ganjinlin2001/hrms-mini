@@ -1,7 +1,26 @@
 <!--pages/performance/performance.wxml-->
 <view class="page">
-  <!-- <view ></view> -->
-  <view class="rows-item" wx:for="{{ rows }}">
+  <view class="remark">
+    <view>
+      <text>绩效与奖惩说明：</text>
+    </view>
+    <view>
+      <text>实发工资=绩效工资+奖惩工资+基本工资</text>
+    </view>
+    <view>
+      <text>绩效工资占比：</text>
+    </view>
+    <view>
+      <text>A-占基本工资的30%</text>
+    </view>
+    <view>
+      <text>B-占基本工资的20%</text>
+    </view>
+    <view>
+      <text>C-占基本工资的10%</text>
+    </view>
+  </view>
+  <view class="rows-item" wx:for="{{ rows }}" wx:key="id">
     <view class="rows-item-cell">
       <view class="label">月份</view>
       <view class="content">{{item.year}}-{{item.month}}</view>
@@ -29,10 +48,6 @@
     <view class="rows-item-cell">
       <view class="label">实发工资</view>
       <view class="content">{{ item.real_salary == null ? '暂无' : item.real_salary }}</view>
-    </view>
-    <view class="rows-item-cell">
-      <view class="label">说明</view>
-      <view class="content">实发工资=绩效工资+奖惩工资+基本工资</view>
     </view>
   </view>
   <view class="space"></view>
