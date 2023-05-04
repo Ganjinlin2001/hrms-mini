@@ -50,7 +50,7 @@
     </picker>
   </view>
   <!-- 第五种：密码重置 -->
-  <view class="weui-cells change-password-box">
+  <view class="weui-cells change-password-box" wx:if="{{type === 'password'}}">
     <label class="weui-cell weui-cell_active">
       <view class="weui-cell__hd">
         <text class="weui-label">密码</text>

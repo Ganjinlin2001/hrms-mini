@@ -48,7 +48,7 @@ Page({
       console.log(res);
       // 如果有记录，展示申请原因和申请状态、撤销申请按钮
       if (res.data.result != undefined) {
-        const lateRecord = res.data.result[res.data.result.length - 1];
+        const lateRecord = res.data.result[0];
         this.setData({
           status: lateRecord.status === -2 ? -1 : lateRecord.status,
           reason: lateRecord.reason,
